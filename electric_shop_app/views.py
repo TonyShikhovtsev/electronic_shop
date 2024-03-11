@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from .models import Supplier
 from .permissions import IsActiveEmployee
 from .serializers import SupplierSerializer
+from django.shortcuts import render
+
 
 class SupplierViewSet(viewsets.ModelViewSet):
     queryset = Supplier.objects.all()
@@ -27,3 +29,6 @@ class SupplierViewSet(viewsets.ModelViewSet):
         self.perform_update(serializer)
 
         return Response(serializer.data)
+
+def index(request):
+    return render(request, 'electric_shop_app/index.html')
